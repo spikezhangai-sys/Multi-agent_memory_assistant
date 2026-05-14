@@ -1,0 +1,425 @@
+categories:
+  - id: user.profile
+    description: 用户的稳定身份信息 —— 居住地、教育背景、家庭结构、长期身份属性等
+    default_type: fact
+
+  - id: user.preference
+    description: 用户的口味、爱好、审美、常用工具、工作方式、沟通风格等偏好
+    default_type: preference
+
+  - id: user.constraint
+    description: 用户明确的硬性限制 —— 过敏、忌口、时间禁忌、身体状况限制等
+    default_type: constraint
+
+  - id: user.activity
+    description: 用户的离散事件或近期活动 —— 跑腿、运动、参观、社交、出行等一次性或周期性事件
+    default_type: episodic
+
+  - id: user.metric
+    description: 用户的量化指标 —— 成绩、配速、排名、分数、个人最佳等可比较数值
+    default_type: fact
+
+  - id: user.communication
+    description: 用户偏好的交互方式 —— 语气、回复长度、结构化程度、称呼等
+    default_type: preference
+
+  - id: user.possessions
+    description: 用户拥有、购买、订阅或持有的具体物品、服务、房产、车辆、电子设备、会员、订单等有所有权或订阅关系的对象
+    default_type: fact
+
+  - id: user.relationships
+    description: 用户生活中的人与宠物 —— 家人、伴侣、朋友、同事、养的动物 —— 及与之绑定的事实与事件
+    default_type: fact
+
+  - id: user.health
+    description: 用户的健康状况、药物、治疗、医疗访问、身体状态 —— 不含饮食忌口（那归 user.constraint.diet）
+    default_type: fact
+
+  - id: project.context
+    description: 具体项目的上下文 —— 技术栈、截止时间、里程碑、客户要求、团队约定等
+    default_type: fact
+
+  - id: project.operations
+    description: 项目运作层面的事实 —— 排班、轮班、值班表、运营流程等
+    default_type: fact
+
+seed_leaves:
+  - path: user.profile.location
+    description: 用户当前居住地、长期所在城市或搬家信息
+    examples:
+      - 我现在住在上海
+      - I moved to New York last month.
+    keywords:
+      - 住在
+      - 搬家
+      - 搬到
+      - 城市
+      - location
+      - moved
+      - relocated
+
+  - path: user.profile.education
+    description: 用户的学历、专业、学位或毕业背景
+    examples:
+      - 我学的是计算机科学
+      - I graduated with a degree in Business Administration.
+    keywords:
+      - degree
+      - major
+      - graduated
+      - graduation
+      - education
+      - university
+      - college
+      - 学位
+      - 专业
+      - 毕业
+
+  - path: user.preference.food
+    description: 用户的食物口味与饮食偏好
+    examples:
+      - 我最近喜欢吃日料
+      - I really enjoy Korean BBQ lately.
+    keywords:
+      - 日料
+      - 食物
+      - 口味
+      - 吃
+      - cuisine
+      - dish
+      - flavor
+
+  - path: user.preference.workstyle
+    description: 用户偏好的工作方式、协作节奏、办公模式或会议习惯
+    examples:
+      - 我更喜欢远程工作
+      - 我习惯早上开会
+    keywords:
+      - 远程
+      - 工作方式
+      - 协作
+      - 开会
+      - remote
+      - hybrid
+      - office
+      - commute
+
+  - path: user.preference.software
+    description: 用户偏好或常用的软件、工具、应用、创作流程与编辑环境
+    examples:
+      - 我更喜欢用某款剪辑软件做视频
+      - I enjoy using VS Code for daily work.
+    keywords:
+      - software
+      - tool
+      - app
+      - application
+      - editor
+      - ide
+      - adobe
+      - premiere
+      - 剪辑
+      - 软件
+      - 工具
+
+  - path: user.constraint.diet
+    description: 用户明确的饮食限制、过敏或忌口
+    examples:
+      - 我对花生过敏
+      - 我不能吃太辣
+    keywords:
+      - 过敏
+      - 不能吃
+      - 忌口
+      - 饮食限制
+      - allergy
+      - allergic
+      - intolerant
+
+  - path: user.constraint.schedule
+    description: 用户对时间安排的硬限制
+    examples:
+      - 我周末不能开会
+      - 晚上十点后不要打电话
+    keywords:
+      - 不能
+      - 周末
+      - 晚上
+      - 时间安排
+      - unavailable
+      - do not
+      - after hours
+
+  - path: user.activity.errands
+    description: 用户需要处理的跑腿事项，例如取件、退货、换货、干洗或店内领取
+    examples:
+      - 我还要去取干洗的西装外套
+      - I still need to return some boots and pick up the new pair.
+    keywords:
+      - pick up
+      - pickup
+      - return
+      - exchange
+      - dry cleaning
+      - errand
+      - drop off
+      - 取件
+      - 退货
+
+  - path: user.activity.cultural_visit
+    description: 用户参观博物馆、展览、画廊或其他文化活动的经历
+    examples:
+      - 我上周去博物馆看了个展
+      - I visited a museum for a guided tour.
+    keywords:
+      - museum
+      - exhibit
+      - exhibition
+      - gallery
+      - tour
+      - 博物馆
+      - 展览
+      - 看展
+
+  - path: user.activity.fitness
+    description: 用户的运动训练、跑步、比赛、健身或锻炼相关活动
+    examples:
+      - 我在为慈善跑训练
+      - I'm preparing for a tournament.
+    keywords:
+      - run
+      - running
+      - race
+      - marathon
+      - tennis
+      - tournament
+      - workout
+      - yoga
+      - gym
+      - training
+      - 跑步
+      - 比赛
+      - 训练
+
+  - path: user.metric.performance
+    description: 用户的成绩、用时、配速、排名、分数或个人最佳表现
+    examples:
+      - My personal best time is 25:50.
+      - 我的最好成绩是 42 分 10 秒。
+    keywords:
+      - personal best
+      - best time
+      - finish time
+      - pace
+      - score
+      - ranking
+      - record
+      - 成绩
+      - 用时
+      - 配速
+      - 最佳
+
+  - path: user.communication.style
+    description: 用户偏好的沟通方式和回复风格
+    examples:
+      - 你回答我时尽量简洁
+      - 我喜欢先给结论
+    keywords:
+      - 沟通
+      - 回答
+      - 简洁
+      - 风格
+      - concise
+      - verbose
+      - tone
+
+  - path: project.context.alpha
+    description: 某个具体项目的上下文、约定、截止时间或项目事实
+    examples:
+      - 项目使用 Python
+      - 项目截止时间是月底
+    keywords:
+      - 项目
+      - 截止时间
+      - deadline
+      - milestone
+
+  - path: project.operations.shifts
+    description: 团队排班、轮班、值班表、运营安排等项目运作事实
+    examples:
+      - 某团员被安排到周日的白班。
+      - 团队采用周日到周六的轮班安排。
+    keywords:
+      - shift
+      - rotation
+      - roster
+      - day shift
+      - night shift
+      - schedule
+      - on call
+      - 排班
+      - 轮班
+      - 班次
+      - 值班
+
+  - path: user.possessions.vehicle
+    description: 用户拥有或常用的车辆 —— 汽车、摩托车、自行车、船等
+    examples:
+      - I drive a 2019 Subaru Outback.
+      - 我开一辆特斯拉 Model 3。
+    keywords:
+      - drive
+      - car
+      - vehicle
+      - truck
+      - motorcycle
+      - bike
+      - bicycle
+      - 开车
+      - 车
+      - 摩托车
+
+  - path: user.possessions.electronics
+    description: 用户拥有的电子设备 —— 手机、电脑、耳机、家电、相机等
+    examples:
+      - I just got a 15" M2 MacBook Pro.
+      - 我的新耳机今天到了。
+    keywords:
+      - iPad
+      - iPhone
+      - laptop
+      - headphones
+      - phone
+      - battery
+      - camera
+      - macbook
+      - 电脑
+      - 手机
+      - 耳机
+      - 设备
+
+  - path: user.possessions.subscriptions
+    description: 用户的订阅、会员、rewards 计划、流媒体服务、积分等级
+    examples:
+      - I subscribe to two magazines currently.
+      - 我是 Starbucks gold 级会员。
+    keywords:
+      - subscription
+      - subscribe
+      - rewards
+      - frequent flyer
+      - membership
+      - streaming
+      - premium
+      - 订阅
+      - 会员
+      - 积分
+
+  - path: user.possessions.home
+    description: 用户的房产、公寓、家具、家居物品及家居状态
+    examples:
+      - We just bought a townhouse in Brookside.
+      - 我最近换了一张新沙发。
+    keywords:
+      - house
+      - apartment
+      - townhouse
+      - property
+      - rug
+      - furniture
+      - kitchen
+      - bedroom
+      - living room
+      - 房子
+      - 公寓
+      - 家具
+      - 客厅
+
+  - path: user.relationships.family
+    description: 用户的家庭成员 —— 父母、兄弟姐妹、配偶、子女、亲戚
+    examples:
+      - My sister Meili just moved to Boston.
+      - 我妹妹下周来看我。
+    keywords:
+      - sister
+      - brother
+      - mom
+      - dad
+      - mother
+      - father
+      - wife
+      - husband
+      - partner
+      - son
+      - daughter
+      - niece
+      - nephew
+      - uncle
+      - aunt
+      - 妹妹
+      - 哥哥
+      - 妈妈
+      - 爸爸
+      - 父母
+      - 伴侣
+      - 家人
+
+  - path: user.relationships.pets
+    description: 用户养的宠物 —— 狗、猫、其他动物
+    examples:
+      - My dog Basil has a vet appointment next Tuesday.
+      - 我家橘猫最近食欲不好。
+    keywords:
+      - dog
+      - cat
+      - puppy
+      - kitten
+      - vet
+      - pet
+      - goat
+      - feed
+      - bark
+      - meow
+      - 狗
+      - 猫
+      - 宠物
+      - 兽医
+
+  - path: user.health.doctor_visit
+    description: 用户看医生、就诊、治疗、体检、复诊等具体医疗访问事件
+    examples:
+      - Saw my ENT specialist yesterday.
+      - 上周去看了牙医。
+    keywords:
+      - doctor
+      - dentist
+      - clinic
+      - hospital
+      - appointment
+      - specialist
+      - therapist
+      - 医生
+      - 看病
+      - 牙医
+      - 体检
+      - 就诊
+
+  - path: user.health.condition
+    description: 用户的慢性或持续性健康状况、诊断、症状、身体状态
+    examples:
+      - I have mild asthma and carry an inhaler.
+      - 我最近腰椎不太好。
+    keywords:
+      - asthma
+      - diabetes
+      - hypertension
+      - chronic
+      - condition
+      - diagnosed
+      - symptom
+      - injury
+      - recovery
+      - 高血压
+      - 哮喘
+      - 慢性
+      - 腰椎

@@ -1,0 +1,16 @@
+.env
+__pycache__/
+.pytest_cache/
+.claude/
+.codex
+LongMemEval/
+MIRIX/
+letta/
+mem0/
+*.egg-info/
+dist/
+build/
+
+runs/
+.DS_Store
+.DS_Store *

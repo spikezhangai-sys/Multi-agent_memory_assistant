@@ -1,0 +1,25 @@
+visibility:
+  global:
+    - global
+  personal:
+    - global
+    - personal
+  project:
+    - global
+    - personal
+    - project_same_ref
+  session:
+    - global
+    - personal
+    - session_same_ref
+
+compat:
+  global:
+    - global
+  personal:
+    - personal
+  project:
+    - project_same_ref
+  session:
+    - session_same_ref
+

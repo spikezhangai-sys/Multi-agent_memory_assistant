@@ -1,0 +1,31 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "driftscope"
+version = "0.1.0"
+description = "DriftScope-MA memory system prototype"
+requires-python = ">=3.10"
+dependencies = [
+  "pydantic>=2,<3",
+  "PyYAML>=6,<7",
+  "python-dotenv>=1,<2",
+  "requests>=2,<3",
+  "certifi>=2024.0.0",
+  "numpy>=1.24,<3",
+]
+
+[project.optional-dependencies]
+local-embeddings = ["sentence-transformers>=2.2,<6"]
+mem0-baseline = ["mem0ai>=1"]
+
+[project.scripts]
+driftscope-longmemeval = "driftscope.eval.longmemeval.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["driftscope"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

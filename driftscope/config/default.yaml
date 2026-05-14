@@ -1,0 +1,73 @@
+retrieval:
+  top_k: 20
+  embedding_backend: "local"        # mock|openai|local; local uses sentence-transformers (bge-small-en-v1.5 by default)
+  embedding_model: "BAAI/bge-large-en-v1.5"
+  embedding_dim: 1024
+  lambda_r: 0.5
+  lambda_f: 0.3
+  lambda_c: 0.2
+  tau_pref: 30
+  tau_episodic: 60
+  tau_fact: 90                      # state-style facts decay so newer values beat older ones
+  tau_direct: 0.7
+  rrf_k: 60
+  dense_top_n: 30
+  sparse_top_n: 30
+  lambda_time: 0.30
+  tau_time: 14.0
+  query_time_parse_enabled: true    # rule-based temporal anchor (zero-LLM); ported from mempalace hybrid_v4
+  lambda_quoted: 0.5                # boost when memory contains a quoted phrase from the query (SSA "you suggested 'X'")
+  lambda_person: 0.3                # boost when memory contains a capitalized name from the query (TR "what did I do with Rachel")
+  multi_topic_retrieval_enabled: true   # LLM picks N candidate topics; retrieval fans out per topic and RRF-merges
+  multi_topic_max_topics: 4             # cap on how many topics the predictor returns
+
+update:
+  nearby_k: 0
+
+conflict_selector:
+  top_k: 5
+  revoke_top_k: 3
+  min_score: 0.40
+  revoke_min_score: 0.25
+  ambiguity_margin: 0.08
+  content_sim_weight: 0.5
+  keyword_overlap_weight: 0.2
+  time_proximity_weight: 0.2
+  confidence_weight: 0.1
+
+confidence:
+  w_p: 0.7
+  w_l: 0.3
+  prior_table:
+    user_explicit: 0.9
+    user_implicit: 0.6
+    inferred: 0.4
+    external: 0.5
+
+retention:
+  corrected_archive_days: 90
+  revoked_archive_days: 30
+  rollback_window_days: 30
+
+llm:
+  default_model: "deepseek/deepseek-v4-flash"
+  timeout_sec: 30
+  max_retries: 3
+
+write_gate:
+  enabled: true
+  alpha_confidence: 0.55
+  beta_importance: 0.45
+  default_importance: 0.5
+  sensitivity_penalty:
+    low: 0.0
+    medium: 0.1
+    high: 0.25
+  threshold_by_type:
+    fact: 0.55
+    preference: 0.55
+    constraint: 0.5
+    episodic: 0.55
+  drop_high_sensitivity: true
+  assistant_min_importance: 0.4
+  require_evidence: false  # flip to true once you verify the LLM actually fills evidence; otherwise all writes drop
